@@ -54,9 +54,9 @@ def main(contact: Contact) -> Contact:
     return contact
 
 
-@app.delete("/api/v1/contact")
+@app.delete("/api/v1/contact", status_code=status.HTTP_204_NO_CONTENT)
 def main():
-    return contact_
+    return
 
 
 @app.get("/api/v1/group")
@@ -74,9 +74,9 @@ def main_group(group: Group) -> Group:
     return group
 
 
-@app.delete("/api/v1/group")
+@app.delete("/api/v1/group", status_code=status.HTTP_204_NO_CONTENT)
 def main_group():
-    return group_
+    return
 
 
 if __name__ == "__main__":

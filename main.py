@@ -33,49 +33,45 @@ class Group:
 
 app = FastAPI()
 
-phone_ = Phone(TypeID=0, CountryCode=0, Operator=0, Number=0)
-contact_ = Contact(ID=0, Username="string", GivenName="string",
-                   FamilyName="string", Phone=phone_, Email=["string"], Birthday=date.today())
-group_ = Group(ID=0, Title="string", Description="string", Contacts=[0])
 
-
-@app.get("/api/v1/contact")
-def main():
-    return contact_
+@app.get("/api/v1/contact/{contact_id}")
+def get_contact(contact_id: int) -> Contact:
+    return Contact(ID=contact_id, Username="string", GivenName="string",
+                   FamilyName="string", Phone=Phone(TypeID=0, CountryCode=0, Operator=0, Number=0), Email=["string"], Birthday=date.today())
 
 
 @app.post("/api/v1/contact", status_code=status.HTTP_201_CREATED)
-def main(contact: Contact) -> Contact:
+def post_contact(contact: Contact) -> Contact:
     return contact
 
 
-@app.put("/api/v1/contact")
-def main(contact: Contact) -> Contact:
+@app.put("/api/v1/contact/{contact_id}")
+def put_contact(contact_id: int, contact: Contact) -> Contact:
     return contact
 
 
-@app.delete("/api/v1/contact", status_code=status.HTTP_204_NO_CONTENT)
-def main():
+@app.delete("/api/v1/contact/{contact_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_contact(contact_id: int):
     return
 
 
-@app.get("/api/v1/group")
-def main_group():
-    return group_
+@app.get("/api/v1/group/{group_id}")
+def get_group(group_id: int) -> Group:
+    return Group(ID=group_id, Title="string", Description="string", Contacts=[0])
 
 
 @app.post("/api/v1/group", status_code=status.HTTP_201_CREATED)
-def main_group(group: Group) -> Group:
+def post_group(group: Group) -> Group:
     return group
 
 
-@app.put("/api/v1/group")
-def main_group(group: Group) -> Group:
+@app.put("/api/v1/group/{group_id}")
+def put_group(group_id: int, group: Group) -> Group:
     return group
 
 
-@app.delete("/api/v1/group", status_code=status.HTTP_204_NO_CONTENT)
-def main_group():
+@app.delete("/api/v1/group/{group_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_group(group_id: int):
     return
 
 
